@@ -49,3 +49,17 @@ let g:go_highlight_build_constraints = 1
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
+
+" general config
+set incsearch
+set number
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set expandtab
+set hls
+set timeoutlen=3000
+set ttimeoutlen=1000
+set backspace=2
+set clipboard=unnamed
+set list
