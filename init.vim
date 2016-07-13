@@ -14,6 +14,9 @@ Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 filetype plugin indent on    " required
@@ -63,3 +66,6 @@ set ttimeoutlen=1000
 set backspace=2
 set clipboard=unnamed
 set list
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
