@@ -3,20 +3,26 @@ filetype off                  " required
 
 call plug#begin('~/.config/nvim/plugged/')
 
+" tpope
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
 
 " Golang Plugins
 Plug 'fatih/vim-go'
 
-Plug 'kien/ctrlp.vim'
-Plug 'bling/vim-airline'
+" vim-airline
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'kien/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
+Plug 'Valloric/YouCompleteMe'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 filetype plugin indent on    " required
@@ -33,7 +39,7 @@ set background=dark
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols='fancy'
 
 " Golang
 au FileType go nmap <leader>r <Plug>(go-run)
@@ -66,6 +72,12 @@ set ttimeoutlen=1000
 set backspace=2
 set clipboard=unnamed
 set list
+set cursorline
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0 " prevent confirmation for loading .ycm_extra_conf.py
+let g:ycm_always_populate_location_list = 1
