@@ -3,7 +3,6 @@ filetype off                  " required
 
 call plug#begin('~/.config/nvim/plugged/')
 
-" tpope
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -16,17 +15,24 @@ Plug 'fatih/vim-go'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'kien/ctrlp.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
+
+Plug 'kien/ctrlp.vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 filetype plugin indent on    " required
-
 syntax enable
 
 " solarized
@@ -81,3 +87,25 @@ let g:deoplete#enable_at_startup = 1
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0 " prevent confirmation for loading .ycm_extra_conf.py
 let g:ycm_always_populate_location_list = 1
+
+" ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" ctrl-l for snippet expand...
+let g:UltiSnipsExpandTrigger="<c-l>"
+" ... and ctrl-m to jump forward inside it between placeholders
+let g:UltiSnipsJumpForwardTrigger="<c-m>"
+" or ctrl-z to jump backwards
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" nerd tools
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" key bindings
+" for moving around between splits...
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
