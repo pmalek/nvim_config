@@ -22,14 +22,15 @@ Plug 'honza/vim-snippets'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+
 Plug 'kien/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+Plug 'rhysd/vim-clang-format'
 call plug#end()
 
 filetype plugin indent on    " required
@@ -109,3 +110,22 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+" misc
+nnoremap <F6> <Esc>:silent! %s/\s\+$//<CR>
+
+" clang-format
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -2,
+            \ "AlignTrailingComments" : "true",
+            \ "AlignAfterOpenBracket" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "AllowShortFunctionsOnASingleLine" : "Inline",
+            \ "BreakBeforeBraces" : "Allman",
+            \ "BinPackParameters" : "false",
+            \ "Standard" : "C++11",
+            \ "ColumnLimit" : 100,
+            \ "UseTab" : "Never" }
+autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd FileType c,cpp nnoremap <buffer><F9> :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp vnoremap <buffer><F9> :ClangFormat<CR>
