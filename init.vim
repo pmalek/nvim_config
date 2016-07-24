@@ -88,6 +88,7 @@ let g:deoplete#enable_at_startup = 1
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0 " prevent confirmation for loading .ycm_extra_conf.py
 let g:ycm_always_populate_location_list = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
