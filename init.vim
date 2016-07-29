@@ -21,6 +21,7 @@ Plug 'honza/vim-snippets'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -74,12 +75,13 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 set hls
-set timeoutlen=3000
-set ttimeoutlen=1000
+set timeoutlen=400
+set ttimeoutlen=400
 set backspace=2
 set clipboard=unnamed
 set list
 set cursorline
+set updatetime=200
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -104,6 +106,7 @@ let g:UltiSnipsEditSplit="vertical"
 " nerd tools
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+map <C-n> :NERDTreeToggle<CR>
 
 " key bindings
 " for moving around between splits...
@@ -121,8 +124,10 @@ let g:clang_format#style_options = {
             \ "AlignAfterOpenBracket" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "AllowShortFunctionsOnASingleLine" : "Inline",
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "BreakBeforeBraces" : "Allman",
             \ "BinPackParameters" : "false",
+            \ "SpaceBeforeParens" : "Never",
             \ "Standard" : "C++11",
             \ "ColumnLimit" : 100,
             \ "UseTab" : "Never" }
@@ -130,3 +135,6 @@ autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType c,cpp nnoremap <buffer><F9> :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><F9> :ClangFormat<CR>
+
+" gitgutter
+let g:gitgutter_highlight_lines = 1
