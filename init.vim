@@ -32,6 +32,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/vim-clang-format'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 filetype plugin indent on    " required
