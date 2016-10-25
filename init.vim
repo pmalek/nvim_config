@@ -119,6 +119,13 @@ nnoremap <C-H> <C-W><C-H>
 " misc
 nnoremap <F6> <Esc>:silent! %s/\s\+$//<CR>
 
+autocmd FileType python nnoremap <Leader>a :YcmCompleter GoTo<CR>
+autocmd FileType python nnoremap <Leader>s *:YcmCompleter GoToReferences<CR>
+autocmd FileType cpp nnoremap <Leader>a :YcmCompleter GoTo<CR>
+autocmd FileType cpp nnoremap <Leader>s :YcmCompleter GoToDeclaration<CR>
+autocmd FileType cpp nnoremap <Leader>d :YcmCompleter GoToDefinition<CR>
+autocmd FileType cpp nnoremap <Leader>t :YcmCompleter GetType<CR>
+
 " clang-format
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -2,
