@@ -22,7 +22,6 @@ Plug 'honza/vim-snippets'
 " requires pip3 install --user neovim
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
-Plug 'davidhalter/jedi'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -33,6 +32,8 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/vim-clang-format'
+Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -59,6 +60,7 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -72,11 +74,9 @@ let g:go_list_type = "quickfix"
 " general config
 set incsearch
 set number
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set expandtab
 set hls
+" https://stackoverflow.com/questions/4559896/how-to-tab-backwards-remove-a-tab-or-tab-spaces-in-vim
+set tabstop=2 softtabstop=-1 shiftwidth=0 expandtab
 set timeoutlen=400
 set ttimeoutlen=400
 set backspace=2
@@ -140,3 +140,15 @@ autocmd FileType c,cpp vnoremap <buffer><F9> :ClangFormat<CR>
 
 " gitgutter
 let g:gitgutter_highlight_lines = 1
+nmap <Leader>g :GitGutterToggle<CR>
+
+" tagbar
+let g:tagbar_width = 70
+let g:tagbar_sort = 0
+let g:tagbar_indent = 1
+let g:tagbar_show_linenumbers = -1
+nmap <F8> :TagbarToggle<CR>
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
