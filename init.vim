@@ -132,7 +132,7 @@ autocmd FileType cpp nnoremap <Leader>t :YcmCompleter GetType<CR>
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -2,
             \ "AlignTrailingComments" : "true",
-            \ "AlignAfterOpenBracket" : "true",
+            \ "AlignAfterOpenBracket" : "Align",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "AllowShortFunctionsOnASingleLine" : "Inline",
             \ "AllowShortIfStatementsOnASingleLine" : "true",
@@ -140,7 +140,12 @@ let g:clang_format#style_options = {
             \ "BinPackParameters" : "false",
             \ "SpaceBeforeParens" : "Never",
             \ "Standard" : "C++11",
-            \ "ColumnLimit" : 100,
+            \ "ColumnLimit" : 110,
+            \ "BreakConstructorInitializersBeforeComma" : "true",
+            \ "ConstructorInitializerAllOnOneLineOrOnePerLine" : "true",
+            \ "Cpp11BracedListStyle" : "true",
+            \ "SpacesInAngles" : "false",
+            \ "SpacesBeforeTrailingComments" : 1,
             \ "UseTab" : "Never" }
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
