@@ -26,7 +26,7 @@ Plug 'zchee/deoplete-jedi'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 Plug 'Valloric/ListToggle'
 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -73,6 +73,11 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 
+" Python
+autocmd FileType python :call deoplete#enable() " currently we use deoplete only for Python
+autocmd FileType python nnoremap <Leader>a :YcmCompleter GoTo<CR>
+autocmd FileType python nnoremap <Leader>s *:YcmCompleter GoToReferences<CR>
+
 " general config
 set incsearch
 set number
@@ -84,12 +89,14 @@ set ttimeoutlen=400
 set backspace=2
 set clipboard=unnamed
 set list
+set listchars=tab:»\ ,trail:\~
+autocmd FileType go set nolist
 set cursorline
 set updatetime=200
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.pdf,*.o,*.so,*.a,*.jar,*.mp3,*.mp4,*.m4a,*.pptx,*.vdi,*.img
 
 " deoplete
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
@@ -122,8 +129,6 @@ nnoremap <C-H> <C-W><C-H>
 " misc
 nnoremap <F6> <Esc>:silent! %s/\s\+$//<CR>
 
-autocmd FileType python nnoremap <Leader>a :YcmCompleter GoTo<CR>
-autocmd FileType python nnoremap <Leader>s *:YcmCompleter GoToReferences<CR>
 autocmd FileType cpp nnoremap <Leader>a :YcmCompleter GoTo<CR>
 autocmd FileType cpp nnoremap <Leader>s :YcmCompleter GoToDeclaration<CR>
 autocmd FileType cpp nnoremap <Leader>d :YcmCompleter GoToDefinition<CR>
@@ -155,6 +160,7 @@ autocmd FileType c,cpp vnoremap <buffer><F9> :ClangFormat<CR>
 
 " gitgutter
 let g:gitgutter_highlight_lines = 1
+let g:gitgutter_enabled = 0 " Enable with <Leader>g if needed
 nmap <Leader>g :GitGutterToggle<CR>
 
 " tagbar
