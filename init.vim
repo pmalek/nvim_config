@@ -86,6 +86,7 @@ set clipboard=unnamed
 set list
 set cursorline
 set updatetime=200
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.pdf,*.o,*.so,*.a,*.jar,*.mp3,*.mp4,*.m4a,*.pptx,*.vdi,*.img
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
