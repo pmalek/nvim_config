@@ -36,7 +36,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/vim-clang-format'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
-Plug 'Yggdroot/indentLine'
 call plug#end()
 
 filetype plugin indent on    " required
@@ -127,7 +126,13 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " misc
+" get rid of trailing whitespaces
 nnoremap <F6> <Esc>:silent! %s/\s\+$//<CR>
+" map ; to :
+nnoremap ; :
+inoremap kj <Esc>
+cnoremap kj <Esc>
+nnoremap <Leader>rv :source ~/.config/nvim/init.vim<CR>
 
 autocmd FileType cpp nnoremap <Leader>a :YcmCompleter GoTo<CR>
 autocmd FileType cpp nnoremap <Leader>s :YcmCompleter GoToDeclaration<CR>
