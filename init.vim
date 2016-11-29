@@ -141,6 +141,9 @@ autocmd FileType cpp nnoremap <Leader>t :YcmCompleter GetType<CR>
 
 " clang-format
 let g:clang_format#style_options = {
+            \ "PointerAlignment" : "Left",
+            \ "BinPackArguments" : "false",
+            \ "BinPackParameters" : "false",
             \ "AccessModifierOffset" : -2,
             \ "AlignTrailingComments" : "true",
             \ "AlignAfterOpenBracket" : "Align",
