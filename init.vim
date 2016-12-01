@@ -130,6 +130,8 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <F6> <Esc>:silent! %s/\s\+$//<CR>
 " map ; to :
 nnoremap ; :
+nnoremap _ :tabp<CR>
+nnoremap + :tabn<CR>
 inoremap kj <Esc>
 cnoremap kj <Esc>
 nnoremap <Leader>rv :source ~/.config/nvim/init.vim<CR>
