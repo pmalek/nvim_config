@@ -125,6 +125,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
 " misc
 " get rid of trailing whitespaces
 nnoremap <F6> <Esc>:silent! %s/\s\+$//<CR>
@@ -134,6 +135,9 @@ nnoremap _ :tabp<CR>
 nnoremap + :tabn<CR>
 inoremap kj <Esc>
 cnoremap kj <Esc>
+" maximize current window (restore with <C-w>=)
+nmap <C-m> <C-w>\|<C-w>_
+" reload init.vim
 nnoremap <Leader>rv :source ~/.config/nvim/init.vim<CR>
 
 autocmd FileType cpp nnoremap <Leader>a :YcmCompleter GoTo<CR>
