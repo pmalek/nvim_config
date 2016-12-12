@@ -158,7 +158,6 @@ let g:clang_format#style_options = {
             \ "AllowShortFunctionsOnASingleLine" : "Inline",
             \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "BreakBeforeBraces" : "Allman",
-            \ "BinPackParameters" : "false",
             \ "SpaceBeforeParens" : "Never",
             \ "Standard" : "C++11",
             \ "ColumnLimit" : 110,
