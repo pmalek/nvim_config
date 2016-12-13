@@ -36,6 +36,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/vim-clang-format'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
+Plug 'pmalek/toogle-maximize.vim'
 call plug#end()
 
 filetype plugin indent on    " required
@@ -187,3 +188,5 @@ nmap <F8> :TagbarToggle<CR>
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+nmap <silent> <C-m> :call ToggleMaximizeCurrentWindow()<CR>
