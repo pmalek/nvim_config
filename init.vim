@@ -3,7 +3,6 @@ filetype off                  " required
 
 call plug#begin('~/.config/nvim/plugged/')
 
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
@@ -37,6 +36,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug 'pmalek/toogle-maximize.vim'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 filetype plugin indent on    " required
