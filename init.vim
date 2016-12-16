@@ -188,5 +188,7 @@ nmap <F8> :TagbarToggle<CR>
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+cnoreabbrev Ack Ack!                                                                                                                                                                                                                           
+cnoreabbrev ack Ack!
 
 nmap <silent> <C-m> :call ToggleMaximizeCurrentWindow()<CR>
