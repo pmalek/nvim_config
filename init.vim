@@ -97,8 +97,6 @@ set cursorline
 set updatetime=200
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.pdf,*.o,*.so,*.a,*.jar,*.mp3,*.mp4,*.m4a,*.pptx,*.vdi,*.img
 
-" deoplete
-let g:deoplete#enable_at_startup = 0
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
@@ -138,10 +136,14 @@ nnoremap _ :tabp<CR>
 nnoremap + :tabn<CR>
 inoremap kj <Esc>
 cnoremap kj <Esc>
-" maximize current window (restore with <C-w>=)
-nmap <C-m> <C-w>\|<C-w>_
+
 " reload init.vim
 nnoremap <Leader>rv :source ~/.config/nvim/init.vim<CR>
+
+autocmd FileType python nnoremap <Leader>a :YcmCompleter GoTo<CR>
+autocmd FileType python nnoremap <Leader>s *:YcmCompleter GoToReferences<CR>
+
+autocmd FileType cpp :call deoplete#disable() " it fights with YouCompleteMe's popups
 
 autocmd FileType cpp nnoremap <Leader>a :YcmCompleter GoTo<CR>
 autocmd FileType cpp nnoremap <Leader>s :YcmCompleter GoToDeclaration<CR>
@@ -180,16 +182,16 @@ let g:gitgutter_enabled = 0 " Enable with <Leader>g if needed
 nmap <Leader>g :GitGutterToggle<CR>
 
 " tagbar
-let g:tagbar_width = 70
+let g:tagbar_width = 60
 let g:tagbar_sort = 0
-let g:tagbar_indent = 1
+let g:tagbar_indent = 2
 let g:tagbar_show_linenumbers = -1
 nmap <F8> :TagbarToggle<CR>
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-cnoreabbrev Ack Ack!                                                                                                                                                                                                                           
+cnoreabbrev Ack Ack!
 cnoreabbrev ack Ack!
 
-nmap <silent> <C-m> :call ToggleMaximizeCurrentWindow()<CR>
+nmap <silent> <S-m> :call ToggleMaximizeCurrentWindow()<CR>
