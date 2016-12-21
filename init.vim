@@ -195,3 +195,9 @@ cnoreabbrev Ack Ack!
 cnoreabbrev ack Ack!
 
 nmap <silent> <S-m> :call ToggleMaximizeCurrentWindow()<CR>
+
+" ctrlp
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(swp|exe|so|dll|zip|gz|gzip|a|tar|png|jpg|jpeg|jar|pyc|class)$',
+  \ } 
