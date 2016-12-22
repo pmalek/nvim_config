@@ -28,7 +28,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 Plug 'Valloric/ListToggle'
 
-Plug 'ctrlpvim/ctrlp.vim'
+"ctrlp
+Plug 'ctrlpvim/ctrlp.vim'                                                                                                                                                                                                                                                        
+Plug 'FelikZ/ctrlp-py-matcher'
+
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
@@ -197,6 +200,8 @@ cnoreabbrev ack Ack!
 nmap <silent> <S-m> :call ToggleMaximizeCurrentWindow()<CR>
 
 " ctrlp
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_lazy_update = 50
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(swp|exe|so|dll|zip|gz|gzip|a|tar|png|jpg|jpeg|jar|pyc|class)$',
