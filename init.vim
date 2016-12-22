@@ -41,6 +41,7 @@ Plug 'mileszs/ack.vim'
 Plug 'pmalek/toogle-maximize.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vim-scripts/a.vim'
+Plug 'b4winckler/vim-angry'
 call plug#end()
 
 filetype plugin indent on    " required
