@@ -100,7 +100,9 @@ autocmd FileType go set nolist
 set cursorline
 set updatetime=200
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.pdf,*.o,*.so,*.a,*.jar,*.mp3,*.mp4,*.m4a,*.pptx,*.vdi,*.img
-
+" improve redraw performance
+" http://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
+set lazyredraw
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
@@ -206,4 +208,7 @@ let g:ctrlp_lazy_update = 50
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(swp|exe|so|dll|zip|gz|gzip|a|tar|png|jpg|jpeg|jar|pyc|class)$',
-  \ } 
+  \ }
+
+" indentline
+let g:indentLine_enabled = 0
