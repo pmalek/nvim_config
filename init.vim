@@ -42,6 +42,7 @@ Plug 'pmalek/toogle-maximize.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vim-scripts/a.vim'
 Plug 'b4winckler/vim-angry'
+Plug 'spolu/dwm.vim'
 call plug#end()
 
 filetype plugin indent on    " required
@@ -213,3 +214,12 @@ let g:ctrlp_custom_ignore = {
 
 " indentline
 let g:indentLine_enabled = 0
+
+let g:dwm_map_keys = 0
+nmap <C-@> <Plug>DWMFocus
+nmap <C-Space> <Plug>DWMFocus
+nmap <C-M> <Plug>DWMNew
+nmap <C-C> <Plug>DWMClose
+nmap <C-S> <Plug>DWMGrowMaster
+nmap <C-A> <Plug>DWMShrinkMaster
+
