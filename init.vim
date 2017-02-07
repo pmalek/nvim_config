@@ -43,16 +43,27 @@ Plug 'mhinz/vim-startify'
 Plug 'vim-scripts/a.vim'
 Plug 'b4winckler/vim-angry'
 Plug 'spolu/dwm.vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'morhetz/gruvbox'
+Plug 'neomake/neomake'
 call plug#end()
 
 filetype plugin indent on    " required
 syntax enable
 
 " solarized
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-colorscheme solarized
+"let g:solarized_termtrans=1
+"let g:solarized_termcolors=256
+"colorscheme solarized
+"set termguicolors
 set background=dark
+let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_invert_selection=0
+let g:gruvbox_vert_split='dark0_hard'
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
+colorscheme gruvbox
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -78,12 +89,25 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
-let g:go_list_type = "quickfix"
+"let g:go_list_type = "quickfix"
+autocmd FileType go :call deoplete#disable() " currently we use deoplete only for Python
 
-" Python
-autocmd FileType python :call deoplete#enable() " currently we use deoplete only for Python
-autocmd FileType python nnoremap <Leader>a :YcmCompleter GoTo<CR>
-autocmd FileType python nnoremap <Leader>s *:YcmCompleter GoToReferences<CR>
+" Syntastic
+let g:syntastic_go_checkers = ["go", "goimports", "golint", "govet"]
+"let g:syntastic_aggregate_errors = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_python_pylint_args = '-d C0103'
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["python"] }
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 " general config
 set incsearch
@@ -223,3 +247,15 @@ nmap <C-C> <Plug>DWMClose
 nmap <C-S> <Plug>DWMGrowMaster
 nmap <C-A> <Plug>DWMShrinkMaster
 
+" Python
+autocmd FileType python :call deoplete#enable() " currently we use deoplete only for Python
+autocmd FileType python nnoremap <Leader>a :YcmCompleter GoTo<CR>
+autocmd FileType python nnoremap <Leader>s *:YcmCompleter GoToReferences<CR>
+au! BufWritePre *.py :Autoformat
+au! BufWritePost *.py :Neomake
+let g:neomake_python_enabled_makers = ["pylint"]
+let g:neomake_open_list = 2
+" alacritty doesn't support unicode :( ... yet
+let g:neomake_error_sign = { 'text': 'E>', 'texthl': 'ErrorMsg' }
+let g:neomake_warning_sign = { 'text': 'W>', 'texthl': 'NeomakeWarningSign' }
+let g:neomake_message_sign = { 'text': 'I>', 'texthl': 'NeomakeMessageSign'}
