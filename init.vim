@@ -21,15 +21,16 @@ Plug 'honza/vim-snippets'
 " requires pip3 install --user neovim
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-go', {'do' : 'make'}
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'Valloric/ListToggle'
 
 "ctrlp
-Plug 'ctrlpvim/ctrlp.vim'                                                                                                                                                                                                                                                        
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 
 Plug 'altercation/vim-colors-solarized'
@@ -42,7 +43,6 @@ Plug 'pmalek/toogle-maximize.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vim-scripts/a.vim'
 Plug 'b4winckler/vim-angry'
-Plug 'spolu/dwm.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'morhetz/gruvbox'
 Plug 'neomake/neomake'
@@ -235,17 +235,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(swp|exe|so|dll|zip|gz|gzip|a|tar|png|jpg|jpeg|jar|pyc|class)$',
   \ }
-
-" indentline
-let g:indentLine_enabled = 0
-
-let g:dwm_map_keys = 0
-nmap <C-@> <Plug>DWMFocus
-nmap <C-Space> <Plug>DWMFocus
-nmap <C-M> <Plug>DWMNew
-nmap <C-C> <Plug>DWMClose
-nmap <C-S> <Plug>DWMGrowMaster
-nmap <C-A> <Plug>DWMShrinkMaster
 
 " Python
 autocmd FileType python :call deoplete#enable() " currently we use deoplete only for Python
