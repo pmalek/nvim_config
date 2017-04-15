@@ -80,6 +80,7 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 au FileType go nmap <Leader>dd <Plug>(go-def)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
