@@ -29,9 +29,13 @@ Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'Valloric/ListToggle'
 
-"ctrlp
+" ctrlp
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
+
+" fzf fuzzy search
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
