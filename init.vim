@@ -154,6 +154,7 @@ let g:UltiSnipsEditSplit="vertical"
 " nerd tools
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+let g:NERDTreeQuitOnOpen= 1
 map <C-n> :NERDTreeToggle<CR>
 
 " key bindings
