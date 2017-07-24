@@ -224,6 +224,8 @@ let g:tagbar_sort = 0
 let g:tagbar_indent = 2
 let g:tagbar_show_linenumbers = -1
 nmap <F8> :TagbarToggle<CR>
+" prevent cursorline and cursorcolumn from showing up which slows down at hogs down CPU
+autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
