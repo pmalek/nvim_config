@@ -230,6 +230,7 @@ if executable('ag')
 endif
 cnoreabbrev Ack Ack!
 cnoreabbrev ack Ack!
+noremap <Leader>f <Esc>bvey:Ack! <C-R>"<CR>
 
 nmap <silent> <S-m> :call ToggleMaximizeCurrentWindow()<CR>
 
