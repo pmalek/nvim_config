@@ -80,7 +80,7 @@ let g:Powerline_symbols='fancy'
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>cv <Plug>(go-coverage-toggle)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 au FileType go nmap <Leader>dd <Plug>(go-def)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
@@ -102,10 +102,11 @@ let g:go_updatetime = 300
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
 "let g:go_list_type = "quickfix"
+let g:go_list_type = "locationlist"
 autocmd FileType go :call deoplete#disable() " currently we use deoplete only for Python
 
 " Syntastic
-let g:syntastic_go_checkers = ["go", "goimports", "golint", "govet"]
+let g:syntastic_go_checkers = ["go", "golint", "govet"]
 "let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
