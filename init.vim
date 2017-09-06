@@ -268,3 +268,21 @@ let g:neomake_warning_sign = { 'text': 'W>', 'texthl': 'NeomakeWarningSign' }
 let g:neomake_message_sign = { 'text': 'I>', 'texthl': 'NeomakeMessageSign'}
 
 set mouse=a
+
+
+"=====[ Highlight matches when jumping to next ]=============
+
+    " This rewires n and N to do the highlighing...
+    nnoremap <silent> n   n:call HLNext(70)<CR>
+    nnoremap <silent> N   N:call HLNext(70)<CR>                                                                                                                                                                                   highlight WhiteOnRed ctermfg=white ctermbg=red
+    highlight WhiteOnBlue ctermfg=white ctermbg=blue
+
+    " just highlight the match in blue for a:blinktime milliseconds                                                                                                                                                                 function! HLNext (blinktime)
+        let [bufnum, lnum, col, off] = getpos('.')
+        let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))                                                                                                                                                               let target_pat = '\c\%#\%('.@/.'\)'
+        let ring = matchadd('WhiteOnBlue', target_pat, 101)
+        redraw
+        exec 'sleep ' . a:blinktime . 'm'
+        call matchdelete(ring)
+        redraw
+    endfunction
