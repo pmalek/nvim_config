@@ -49,11 +49,36 @@ Plug 'vim-scripts/a.vim'
 Plug 'b4winckler/vim-angry'
 Plug 'Chiel92/vim-autoformat'
 Plug 'morhetz/gruvbox'
-Plug 'neomake/neomake'
+
+" --- linting
+" Plug 'vim-tic/syntastic'
+" Plug 'neomake/neomake'
+Plug 'w0rp/ale'
+
 call plug#end()
 
 filetype plugin indent on    " required
 syntax enable
+
+" general config
+set incsearch
+set number
+set hls
+" https://stackoverflow.com/questions/4559896/how-to-tab-backwards-remove-a-tab-or-tab-spaces-in-vim
+set tabstop=2 softtabstop=-1 shiftwidth=0 expandtab
+set timeoutlen=400
+set ttimeoutlen=400
+set backspace=2
+set clipboard=unnamed
+set list
+set listchars=tab:»\ ,trail:\~
+autocmd FileType go set nolist
+set cursorline
+set updatetime=200
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.pdf,*.o,*.so,*.a,*.jar,*.mp3,*.mp4,*.m4a,*.pptx,*.vdi,*.img
+" improve redraw performance
+" http://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
+set lazyredraw
 
 " solarized
 "let g:solarized_termtrans=1
@@ -106,41 +131,44 @@ let g:go_list_type = "locationlist"
 autocmd FileType go :call deoplete#disable() " currently we use deoplete only for Python
 
 " Syntastic
-let g:syntastic_go_checkers = ["go", "golint", "govet"]
-"let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_enable_highlighting = 1
-let g:syntastic_python_pylint_args = '-d C0103'
-let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "passive_filetypes": ["python"] }
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" let g:syntastic_go_checkers = ["go", "golint", "govet"]
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 1
+" let g:syntastic_enable_highlighting = 1
+" let g:syntastic_python_pylint_args = '-d C0103'
+" let g:syntastic_mode_map = {
+"    \ "mode": "active",
+"    \ "passive_filetypes": ["python"] }
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-" general config
-set incsearch
-set number
-set hls
-" https://stackoverflow.com/questions/4559896/how-to-tab-backwards-remove-a-tab-or-tab-spaces-in-vim
-set tabstop=2 softtabstop=-1 shiftwidth=0 expandtab
-set timeoutlen=400
-set ttimeoutlen=400
-set backspace=2
-set clipboard=unnamed
-set list
-set listchars=tab:»\ ,trail:\~
-autocmd FileType go set nolist
-set cursorline
-set updatetime=200
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.pdf,*.o,*.so,*.a,*.jar,*.mp3,*.mp4,*.m4a,*.pptx,*.vdi,*.img
-" improve redraw performance
-" http://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
-set lazyredraw
+" ---- Ale linters
+let g:airline#extensions#ale#enabled = 1
+let g:ale_linters = {
+      \ 'go': ['go build', 'golint', 'go vet'],
+      \ 'c': [],
+      \ 'cpp': [],
+      \ 'python': ['pylint'],
+      \ }
+let g:ale_sign_column_always = 0
+let g:ale_echo_msg_error_str = '✖ Error'
+let g:ale_echo_msg_warning_str = '⚠ Warning'
+let g:ale_echo_msg_format = '[#%linter%#] [%severity%] %s'
+autocmd FileType go nmap <silent> <C-[> <Plug>(ale_previous_wrap)
+autocmd FileType go nmap <silent> <C-]> <Plug>(ale_next_wrap)
+" Write this in your vimrc file
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+" Set this if you want to.
+" This can be useful if you are combining ALE with
+" some other plugin which sets quickfix errors, etc.
+let g:ale_keep_list_window_open = 0
+highlight ALEErrorSign ctermbg=red ctermfg=white
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
@@ -258,17 +286,16 @@ let g:ctrlp_custom_ignore = {
 autocmd FileType python :call deoplete#enable() " currently we use deoplete only for Python
 autocmd FileType python nnoremap <Leader>a :YcmCompleter GoTo<CR>
 autocmd FileType python nnoremap <Leader>s *:YcmCompleter GoToReferences<CR>
-au! BufWritePre *.py :Autoformat
-au! BufWritePost *.py :Neomake
-let g:neomake_python_enabled_makers = ["pylint"]
-let g:neomake_open_list = 2
-" alacritty doesn't support unicode :( ... yet
-let g:neomake_error_sign = { 'text': 'E>', 'texthl': 'ErrorMsg' }
-let g:neomake_warning_sign = { 'text': 'W>', 'texthl': 'NeomakeWarningSign' }
-let g:neomake_message_sign = { 'text': 'I>', 'texthl': 'NeomakeMessageSign'}
+"au! BufWritePre *.py :Autoformat
+" au! BufWritePost *.py :Neomake
+" let g:neomake_python_enabled_makers = ["pylint"]
+" let g:neomake_open_list = 2
+" " alacritty doesn't support unicode :( ... yet
+" let g:neomake_error_sign = { 'text': 'E>', 'texthl': 'ErrorMsg' }
+" let g:neomake_warning_sign = { 'text': 'W>', 'texthl': 'NeomakeWarningSign' }
+" let g:neomake_message_sign = { 'text': 'I>', 'texthl': 'NeomakeMessageSign'}
 
 set mouse=a
-
 
 "=====[ Highlight matches when jumping to next ]=============
 
