@@ -324,6 +324,8 @@ autocmd FileType python nnoremap <Leader>s *:YcmCompleter GoToReferences<CR>
 " let g:neomake_message_sign = { 'text': 'I>', 'texthl': 'NeomakeMessageSign'}
 
 set mouse=a
+set foldmethod=indent
+set foldlevelstart=20
 
 "=====[ Highlight matches when jumping to next ]=============
 
