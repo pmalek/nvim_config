@@ -192,6 +192,8 @@ autocmd FileType go nmap <silent> <C-]> <Plug>(ale_next_wrap)
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_open_list = 1
+let g:ale_list_window_size = 6
+let g:ale_lint_on_text_changed = 'never'
 " Set this if you want to.
 " This can be useful if you are combining ALE with
 " some other plugin which sets quickfix errors, etc.
@@ -314,14 +316,6 @@ let g:ctrlp_custom_ignore = {
 autocmd FileType python :call deoplete#enable() " currently we use deoplete only for Python
 autocmd FileType python nnoremap <Leader>a :YcmCompleter GoTo<CR>
 autocmd FileType python nnoremap <Leader>s *:YcmCompleter GoToReferences<CR>
-"au! BufWritePre *.py :Autoformat
-" au! BufWritePost *.py :Neomake
-" let g:neomake_python_enabled_makers = ["pylint"]
-" let g:neomake_open_list = 2
-" " alacritty doesn't support unicode :( ... yet
-" let g:neomake_error_sign = { 'text': 'E>', 'texthl': 'ErrorMsg' }
-" let g:neomake_warning_sign = { 'text': 'W>', 'texthl': 'NeomakeWarningSign' }
-" let g:neomake_message_sign = { 'text': 'I>', 'texthl': 'NeomakeMessageSign'}
 
 set mouse=a
 set foldmethod=indent
