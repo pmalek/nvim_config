@@ -49,6 +49,7 @@ Plug 'vim-scripts/a.vim'
 Plug 'b4winckler/vim-angry'
 Plug 'Chiel92/vim-autoformat'
 Plug 'morhetz/gruvbox'
+Plug 'jrosiek/vim-mark'
 
 " --- linting
 " Plug 'vim-tic/syntastic'
