@@ -197,13 +197,12 @@ let g:ale_echo_msg_warning_str = '⚠ Warning'
 let g:ale_echo_msg_format = '[#%linter%#] [%severity%] %s'
 autocmd FileType go nmap <silent> <C-[> <Plug>(ale_previous_wrap)
 autocmd FileType go nmap <silent> <C-]> <Plug>(ale_next_wrap)
-" Write this in your vimrc file
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_open_list = 1
-let g:ale_list_window_size = 6
+let g:ale_list_window_size = 5
+let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
-" Set this if you want to.
 " This can be useful if you are combining ALE with
 " some other plugin which sets quickfix errors, etc.
 let g:ale_keep_list_window_open = 0
