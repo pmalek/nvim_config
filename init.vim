@@ -26,7 +26,7 @@ Plug 'zchee/deoplete-go', {'do' : 'make'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer' }
 Plug 'Valloric/ListToggle'
 
 " ctrlp
