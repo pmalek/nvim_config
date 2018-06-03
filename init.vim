@@ -34,7 +34,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 
 " fzf fuzzy search
-Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': './install --all --64 --no-fish' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'altercation/vim-colors-solarized'
